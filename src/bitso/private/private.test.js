@@ -14,10 +14,10 @@ describe('Bitso Private Client Tests', () => {
   const client = privateClient(mockApi);
   it(`Should create an object with "accountStatus", 
   "accountBalance", "bankCodes", "fees", "fundingDestination", "fundings",
-  "ledger", "lookupOrders", "openTrades", "withdrawals" functions`, () => {
+  "ledger", "lookupOrders", "openTrades", "withdrawals", "placeOrder" functions`, () => {
       expect(client).to.have.keys(
         'accountStatus', 'accountBalance', 'bankCodes', 'fees', 'fundingDestination', 'fundings',
-        'ledger', 'lookupOrders', 'openOrders', 'orderTrades', 'userTrades', 'withdrawals',
+        'ledger', 'lookupOrders', 'openOrders', 'orderTrades', 'userTrades', 'withdrawals', 'placeOrder'
       );
       expect(client.accountStatus).to.be.a('function');
       expect(client.accountBalance).to.be.a('function');

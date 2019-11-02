@@ -1,7 +1,13 @@
 function PrivateApi(api) {
+  
   const get = (obj) => {
     return api.get(Object.assign({}, obj, { priv: true }));
   };
+
+  const post = (obj) => {
+    return api.post(Object.assign({}, obj, { priv: true }));
+  };
+
   const separateOperationItems = (items) => {
     const itemsArray = Array.isArray(items) ? [...items] : [items];
     let itemsString;
@@ -68,6 +74,18 @@ function PrivateApi(api) {
     const limitString = limit ? `?limit=${limit}` : '';
     return get({ url: `/withdrawals/${widString}${limitString}` });
   };
+  /*
+  {
+    book: string, 
+    side: 'buy'|'sell', 
+    type: 'market'|'limit', 
+    time_in_force: 'goodtillcancelled'|'fillorkill'|'immediateorcancel'|'postonly',
+    client_id: string
+  }
+  */
+  const placeOrder = (opts) => {
+    return post({ url, opts});
+  };
 
   return {
     accountStatus,
@@ -82,6 +100,7 @@ function PrivateApi(api) {
     orderTrades,
     userTrades,
     withdrawals,
+    placeOrder
   };
 }
 
